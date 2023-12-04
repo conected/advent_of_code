@@ -21,12 +21,13 @@ From the puzzle text:
 """
 
 
-def _get_numbers_from_string(input):
+def _numbers_in_string(input):
     """Returns an array of all numbers read from a string in order of appearance.
 
     :param input: The input string.
     :return: Array of integers corresponding to the order of appearance in the input.
     """
+    return [n for n in input if n.isdigit()]
 
 
 def _first_number_in_string(input):
@@ -34,7 +35,9 @@ def _first_number_in_string(input):
 
     :param input: The input string
     :return: The first character"""
-    pass
+    numbers = _numbers_in_string(input)
+
+    return numbers[0]
 
 
 def _last_number_in_string(input):
@@ -42,7 +45,9 @@ def _last_number_in_string(input):
 
     :param input: The input string
     :return: The first character"""
-    pass
+    numbers = _numbers_in_string(input)
+
+    return numbers[-1]
 
 
 def get_puzzle_number_from_string(input):
@@ -54,8 +59,12 @@ def get_puzzle_number_from_string(input):
     if type(input) is not str:
         raise Exception("Input is not a string")
 
-    
-    
+    first = _first_number_in_string(input)
+    last = _last_number_in_string(input)
+
+    return int(f"{first}{last}")
+
+
 input = open('input', 'r')
 
 sum = 0
